@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Contrats
 {
-    public interface IserviceManager
+    public interface IServiceManager
     {
         IBookService BookService { get; }
     }
