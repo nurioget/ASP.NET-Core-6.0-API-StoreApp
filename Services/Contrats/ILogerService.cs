@@ -10,7 +10,7 @@ namespace Services.Contrats
     {
         void LogInfo(string message);
         void LogWarning(string message);
-        void LogEror(string message);
+        void LogError(string message);
         void LogDebug(string message);
 
     }

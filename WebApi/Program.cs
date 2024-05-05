@@ -1,13 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using Repositories.EFCore;
+using Services.Contrats;
 using WebApi.Extensions;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
+LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
@@ -27,6 +28,9 @@ builder.Services.ConfigureLoggerService();
 
 var app = builder.Build();
 
+var logger = app.Services.GetRequiredService<ILogerService>();
+app.ConfigureExceptionHandler(logger);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -34,6 +38,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+if (app.Environment.IsProduction())
+{
+    app.UseHsts();
+}
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
