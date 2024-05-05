@@ -1,4 +1,5 @@
-﻿using Entities.Exceptions;
+﻿using Entities.DataTranferObjects;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -24,63 +25,65 @@ namespace Presentation.Controllers
 
         [HttpGet]
         public IActionResult GetAllBooks()
-        {            
-                var books = _manager.BookService.GetAllBooks(false);
+        {
+            var books = _manager.BookService.GetAllBooks(false);
 
-                return Ok(books);   
+            return Ok(books);
         }
 
         [HttpGet("{id:int}")]
         public IActionResult GetOneBook([FromRoute(Name = "id")] int id)
         {
-                var book = _manager
-                    .BookService
-                    .GetOneBookById(id, false);
+            var book = _manager
+                .BookService
+                .GetOneBookById(id, false);
 
-                return Ok(book);    
+            return Ok(book);
         }
 
         [HttpPost]
-        public IActionResult CreateOneBook([FromBody] Book book) 
-        {        
-                if (book is null)
-                    return BadRequest();//400
-                _manager.BookService.CreateOneBook(book);
+        public IActionResult CreateOneBook([FromBody] Book book)
+        {
+            if (book is null)
+                return BadRequest();//400
+            _manager.BookService.CreateOneBook(book);
 
-                return StatusCode(201, book);     
+            return StatusCode(201, book);
         }
 
         [HttpPut("{id:int}")]
         public IActionResult UpdateOneBook([FromRoute(Name = "id")] int id,
-            [FromBody] Book book)
-        {           
-                if (book is null)
-                    return BadRequest();//400
+            [FromBody] BookDtoForUpdate bookDto)
+        {
+            if (bookDto is null)
+                return BadRequest();//400
 
-                _manager.BookService.UpdateOneBook(id, book, true);
-                return NoContent();  
+            _manager.BookService.UpdateOneBook(id, bookDto, true);
+            return NoContent();
         }
 
         [HttpDelete("{id:int}")]
         public IActionResult DeleteOneBooks([FromRoute(Name = "id")] int id)
-        {   
-                _manager.BookService.DeleteOneBook(id, false);
-                return NoContent();
+        {
+            _manager.BookService.DeleteOneBook(id, false);
+            return NoContent();
         }
 
         [HttpPatch("{id:int}")]
         public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id,
             [FromBody] JsonPatchDocument<Book> bookPatch)
-        {         
-                //chck entity
-                var entity = _manager
-                    .BookService
-                    .GetOneBookById(id, true);
+        {
+            //chck entity
+            var entity = _manager
+                .BookService
+                .GetOneBookById(id, true);
 
-                bookPatch.ApplyTo(entity);
-                _manager.BookService.UpdateOneBook(id, entity, true);
+            bookPatch.ApplyTo(entity);
+            _manager.BookService.UpdateOneBook(id,
+                new BookDtoForUpdate(entity.Id, entity.Title, entity.Price)
+                , true);
 
-                return NoContent();//204  
+            return NoContent();//204  
         }
     }
 }

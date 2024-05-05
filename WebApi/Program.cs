@@ -25,6 +25,8 @@ builder.Services.ConfigureRepositoryManeger();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 var app = builder.Build();
 
