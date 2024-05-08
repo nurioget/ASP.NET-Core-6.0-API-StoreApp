@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
@@ -21,6 +22,10 @@ builder.Services.AddControllers(config =>
 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
 .AddNewtonsoftJson();
 
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter=true;
+});
 
 
 // Add services to the container.
