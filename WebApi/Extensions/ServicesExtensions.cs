@@ -67,6 +67,9 @@ namespace WebApi.Extensions
                 {
                     systemTextJsonOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.oget.hateoas+json");
+
+                    systemTextJsonOutputFormatter.SupportedMediaTypes
+                    .Add("aplication/vnd.oget.apiroot+json");
                 }
 
                 var xmlOutputFormatter = config
@@ -77,10 +80,12 @@ namespace WebApi.Extensions
                 {
                     xmlOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.oget.hateoas+xml");
+
+                    xmlOutputFormatter.SupportedMediaTypes
+                    .Add("aplication/vnd.oget.apiroot+xml");
                 }
             });
 
         }
-
     }
 }
