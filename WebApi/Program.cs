@@ -33,12 +33,10 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 
 
-// Add services to the container.
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManeger();
 builder.Services.ConfigureServiceManager();
@@ -49,6 +47,8 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShapper();
 builder.Services.AddCustomMediaTypes();
 builder.Services.AddScoped<IBookLinks, BookLinks>();
+builder.Services.ConfigureVersioning();
+
 
 
 var app = builder.Build();
