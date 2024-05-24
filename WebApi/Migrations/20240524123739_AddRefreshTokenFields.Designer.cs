@@ -12,8 +12,8 @@ using Repositories.EFCore;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240523121244_init")]
-    partial class init
+    [Migration("20240524123739_AddRefreshTokenFields")]
+    partial class AddRefreshTokenFields
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,6 +111,12 @@ namespace WebApi.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -159,6 +165,29 @@ namespace WebApi.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "7732b96c-8265-406e-9e09-539b515d6c84",
+                            ConcurrencyStamp = "857265fb-99af-4f61-adbd-4cc4c2aa7564",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "d8a2058d-6467-4980-8e3e-911367c612a8",
+                            ConcurrencyStamp = "822198ee-09ff-43da-9e3a-3f7de94589ae",
+                            Name = "Editor",
+                            NormalizedName = "EDITOR"
+                        },
+                        new
+                        {
+                            Id = "44fda30c-2baf-4c1b-9293-c9aa05c35bbb",
+                            ConcurrencyStamp = "2aa5c850-5564-4f45-8f42-a6e6d4c9c215",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

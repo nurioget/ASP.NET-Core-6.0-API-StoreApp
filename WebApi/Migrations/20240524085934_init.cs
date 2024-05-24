@@ -171,19 +171,24 @@ namespace WebApi.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "Price", "Title" },
-                values: new object[] { 1, 30m, "suç ve ceza" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "50b578ed-1ee6-4ed3-aa53-6d03f3706320", "b7a8661f-3974-4537-9e6d-e05d2fab2b98", "User", "USER" },
+                    { "7a643c8b-63a4-4768-beb0-785ae34fd24b", "2153ea46-9ced-4426-b85a-06547b772660", "Admin", "ADMIN" },
+                    { "91ef7bd4-3b8a-4574-a36b-17f681bef5e0", "e8d35036-9781-439c-9c8d-7d18d5b5716a", "Editor", "EDITOR" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Price", "Title" },
-                values: new object[] { 2, 356m, "mesneviden dersler" });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "Price", "Title" },
-                values: new object[] { 3, 42m, "Devlet" });
+                values: new object[,]
+                {
+                    { 1, 30m, "suç ve ceza" },
+                    { 2, 356m, "mesneviden dersler" },
+                    { 3, 42m, "Devlet" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -12,8 +12,8 @@ using Repositories.EFCore;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240523122552_AddRolesToDatabase")]
-    partial class AddRolesToDatabase
+    [Migration("20240524085934_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,24 +163,24 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3f76054f-bdc1-482a-ac60-0c8facc720a7",
-                            ConcurrencyStamp = "6cc313e0-0b38-406f-8bb8-946109d6dbc6",
+                            Id = "50b578ed-1ee6-4ed3-aa53-6d03f3706320",
+                            ConcurrencyStamp = "b7a8661f-3974-4537-9e6d-e05d2fab2b98",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "2575b41d-2d18-4677-8017-fed0b655e94f",
-                            ConcurrencyStamp = "9b217cfe-740f-4f26-b83b-060f95332a71",
+                            Id = "91ef7bd4-3b8a-4574-a36b-17f681bef5e0",
+                            ConcurrencyStamp = "e8d35036-9781-439c-9c8d-7d18d5b5716a",
                             Name = "Editor",
-                            NormalizedName = "EDİTOR"
+                            NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "02dfb742-784f-4309-b1bd-476f7c7d5f75",
-                            ConcurrencyStamp = "8bc00bb6-9fae-4885-a230-d01cbe2a58b5",
+                            Id = "7a643c8b-63a4-4768-beb0-785ae34fd24b",
+                            ConcurrencyStamp = "2153ea46-9ced-4426-b85a-06547b772660",
                             Name = "Admin",
-                            NormalizedName = "ADMİN"
+                            NormalizedName = "ADMIN"
                         });
                 });
 
