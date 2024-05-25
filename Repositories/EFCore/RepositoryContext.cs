@@ -20,6 +20,8 @@ namespace Repositories.EFCore
 
         }
         public DbSet<Book> Books { get; set; }
+        public DbSet <Category> categories { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

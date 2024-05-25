@@ -23,8 +23,10 @@ builder.Services.AddControllers(config =>
 })
 .AddXmlDataContractSerializerFormatters()
 .AddCustomCsvFotmatter()
-.AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
-//.AddNewtonsoftJson();
+.AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
+.AddNewtonsoftJson(opt=>
+    opt.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 
 
