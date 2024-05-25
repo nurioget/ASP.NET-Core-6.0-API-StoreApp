@@ -37,8 +37,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 
 builder.Services.AddControllers();
+builder.Services.ConfigureSwagger();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManeger();
 builder.Services.ConfigureServiceManager();
@@ -69,7 +69,11 @@ app.ConfigureExceptionHandler(logger);
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(s =>
+    {
+        s.SwaggerEndpoint("/swagger/v1/swagger.json", "oget v1");
+        s.SwaggerEndpoint("/swagger/v2/swagger.json", "oget v2");
+    });
 }
 
 if (app.Environment.IsProduction())

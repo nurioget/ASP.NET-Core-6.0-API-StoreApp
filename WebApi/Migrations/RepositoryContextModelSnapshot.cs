@@ -167,22 +167,22 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7732b96c-8265-406e-9e09-539b515d6c84",
-                            ConcurrencyStamp = "857265fb-99af-4f61-adbd-4cc4c2aa7564",
+                            Id = "a6bfb07f-78f7-42d2-bb3f-7293eb0bdfbd",
+                            ConcurrencyStamp = "3cfb14de-0555-414d-b058-916c6c86a2f2",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "d8a2058d-6467-4980-8e3e-911367c612a8",
-                            ConcurrencyStamp = "822198ee-09ff-43da-9e3a-3f7de94589ae",
+                            Id = "64606fa0-55c1-4f4c-8c67-1ddb710821df",
+                            ConcurrencyStamp = "4d5dd230-cb07-4309-898c-fe6d07cca7f0",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "44fda30c-2baf-4c1b-9293-c9aa05c35bbb",
-                            ConcurrencyStamp = "2aa5c850-5564-4f45-8f42-a6e6d4c9c215",
+                            Id = "0ecf0315-a632-4e1d-861c-dc421e2b873b",
+                            ConcurrencyStamp = "a712c55a-28dd-407d-a0f3-583ffce79eb6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

@@ -9,17 +9,18 @@ namespace Entities.DataTranferObjects
 {
     public record UserForRegistrationDto
     {
-        public String? FirstName { get; init; }
-        public String? LastName { get; init; }
+        public string? FirstName { get; init; }
+        public string? LastName { get; init; }
 
-        [Required(ErrorMessage ="Usernaem is required")]
-        public String? UserName { get; init; }
+        [Required(ErrorMessage = "Username is required.")]
+        public string? UserName { get; init; }
 
-        [Required(ErrorMessage ="Password is required")]
-        public String? Password { get; init; }
+        [Required(ErrorMessage = "Password is required.")]
+        public string? Password { get; init; }
 
-        public String? Email { get; init; }
-        public String? PhoneNumber { get; init; }
+        public string? Email { get; init; }
+        public string? PhoneNumber { get; init; }
+
         public ICollection<string>? Roles { get; init; }
     }
 }
